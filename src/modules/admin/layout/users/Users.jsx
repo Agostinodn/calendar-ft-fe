@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { DatePicker, Form, Input, Divider, List, Skeleton } from "antd";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Content } from "../../components";
-import { auth } from "../../../../shared/services/auth";
+// import { auth } from "../../../../shared/services/auth";
 //
 export default function Users({
   serchBar,
@@ -17,7 +17,7 @@ export default function Users({
 
   const sendForm = (e) => {
     e.preventDefault();
-    console.log(e);
+    console.log();
 
     // if (
     //   !userForm.username ||

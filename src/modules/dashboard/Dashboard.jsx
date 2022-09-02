@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Card, Descriptions, Progress, List } from "antd";
+import { Row, Col, Card, Descriptions, Progress } from "antd";
 import { anagrafica } from "../../shared/services/anagrafica";
 
 export default function Dashboard() {
@@ -7,7 +7,7 @@ export default function Dashboard() {
   const [dbData, setDbData] = useState([]);
 
   const [totWork, setTotWork] = useState(0);
-  const [workDay, setWorkDay] = useState(0);
+  // const [workDay, setWorkDay] = useState(0);
   const [lavoro, setLavoro] = useState(0);
   const [ferie, setFerie] = useState(0);
   const [malattia, setMalattia] = useState(0);
@@ -58,7 +58,7 @@ export default function Dashboard() {
     let workday = data.length;
     let percentuale_workday = parseInt((100 * workday) / 255);
     setTotWork(percentuale_workday);
-    setWorkDay(workday);
+    // setWorkDay(workday);
 
     // console.log(workday);
     // console.log(giorni_lavoro, giorni_ferie, giorni_malattia);
