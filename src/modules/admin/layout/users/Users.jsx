@@ -57,7 +57,13 @@ export default function Users({
       <Button
         type="default"
         onClick={showModal}
-        style={{ margin: "10px 0px 20px" }}
+        style={{
+          margin: "10px 0px 20px",
+          borderColor: "rgb(255,68,56)",
+          background: "rgb(255,68,56)",
+          color: "#fff",
+          boxShadow: "none",
+        }}
       >
         Crea Nuovo Utente
       </Button>

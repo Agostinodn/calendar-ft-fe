@@ -24,6 +24,9 @@ export default function RegisterAdminModule({
       console.log("le password non corrispondono");
     } else {
       setDisabledBUtton(true);
+      setTimeout(() => {
+        setDisabledBUtton(false);
+      }, 1000);
       auth
         .create(userForm)
         .then((res) => {
