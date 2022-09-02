@@ -55,11 +55,11 @@ export default function Users({
         />
       </Content.SerchList>
       <Button
-        type="primary"
+        type="default"
         onClick={showModal}
         style={{ margin: "10px 0px 20px" }}
       >
-        Crea un Nuovo Utente
+        Crea Nuovo Utente
       </Button>
 
       <Modal
