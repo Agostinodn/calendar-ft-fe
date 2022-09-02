@@ -22,7 +22,7 @@ export default function AdminDashboard() {
       .getAll()
       .then((res) => {
         console.log(res.response);
-        setData(...res.response);
+        setData([...res.response]);
       })
       .catch((e) => {
         console.log(e);
