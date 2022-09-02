@@ -3,8 +3,7 @@ import { DatePicker, Form, Input, Divider, List, Skeleton } from "antd";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Content } from "../../components";
 import { auth } from "../../../../shared/services/auth";
-import { useForm } from "react-hook-form";
-
+//
 export default function Users({
   serchBar,
   setSerchBar,
@@ -18,11 +17,7 @@ export default function Users({
 
   const sendForm = (e) => {
     e.preventDefault();
-    console.log(userForm.birth);
-    let birth = new Date(useForm.birth);
-    console.log(birth);
-    birth.toLocaleString();
-    console.log(birth);
+    console.log(e);
 
     // if (
     //   !userForm.username ||
