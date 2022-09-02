@@ -37,14 +37,14 @@ export default function Dashboard() {
     let giorni_ferie = 0;
     let giorni_malattia = 0;
 
-    data?.map((item) => {
-      if (item.mode === "ufficio") giorni_lavoro++;
-      if (item.mode === "smart") giorni_lavoro++;
-      if (item.mode === "trasferta") giorni_lavoro++;
-      if (item.mode === "chiusura") giorni_lavoro++;
-      if (item.mode === "ferie") giorni_ferie++;
-      if (item.mode === "malattia") giorni_malattia++;
-    });
+    for (let i in data) {
+      if (data[i].mode === "ufficio") giorni_lavoro++;
+      if (data[i].mode === "smart") giorni_lavoro++;
+      if (data[i].mode === "trasferta") giorni_lavoro++;
+      if (data[i].mode === "chiusura") giorni_lavoro++;
+      if (data[i].mode === "ferie") giorni_ferie++;
+      if (data[i].mode === "malattia") giorni_malattia++;
+    }
 
     let giorni_tot = giorni_lavoro + giorni_ferie + giorni_malattia;
 

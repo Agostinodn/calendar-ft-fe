@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DatePicker, Form, Input, Divider, List, Skeleton } from "antd";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Content } from "../../components";
@@ -14,6 +14,10 @@ export default function Users({
   navigation,
 }) {
   const [userForm, setUserForm] = useState({});
+
+  useEffect(() => {
+    loadData();
+  }, []);
 
   const sendForm = (e) => {
     e.preventDefault();

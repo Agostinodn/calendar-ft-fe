@@ -10,14 +10,9 @@ export default function AdminDashboard() {
   const [serchBar, setSerchBar] = useState("");
   const [singleUser, setSingleUser] = useState([]);
 
-  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
 
   const loadData = () => {
-    if (loading) {
-      return;
-    }
-    setLoading(true);
     auth
       .getAll()
       .then((res) => {
@@ -28,10 +23,6 @@ export default function AdminDashboard() {
         console.log(e);
       });
   };
-
-  useEffect(() => {
-    loadData();
-  }, []);
 
   const filteredPersons = data.filter((person) =>
     person.username.toLowerCase().includes(serchBar.toLowerCase())
