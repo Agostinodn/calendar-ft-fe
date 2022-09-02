@@ -24,6 +24,10 @@ export default function AdminDashboard() {
       });
   };
 
+  useEffect(() => {
+    loadData();
+  }, []);
+
   const filteredPersons = data.filter((person) =>
     person.username.toLowerCase().includes(serchBar.toLowerCase())
   );
@@ -42,7 +46,6 @@ export default function AdminDashboard() {
                   setSerchBar={setSerchBar}
                   filteredPersons={filteredPersons}
                   data={data}
-                  loadData={loadData}
                   setSingleUser={setSingleUser}
                   navigation={navigation}
                 />
