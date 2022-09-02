@@ -54,9 +54,9 @@ export default function Login({ children, ...restProps }) {
           ) : null}
 
           <RegisterModule.Button>Send</RegisterModule.Button>
-          <RegisterModule.ButtonLink to="/register">
+          {/* <RegisterModule.ButtonLink to="/register">
             Register
-          </RegisterModule.ButtonLink>
+          </RegisterModule.ButtonLink> */}
         </RegisterModule.FormBox>
       </RegisterModule>
     </RegisterModule.Container>

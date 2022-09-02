@@ -97,7 +97,7 @@ export default function Register({ children, ...restProps }) {
           <RegisterModule.Alert>{alertForm}</RegisterModule.Alert>
         ) : null}
         <RegisterModule.Button>Send</RegisterModule.Button>
-        <RegisterModule.ButtonLink to="/login">Login</RegisterModule.ButtonLink>
+        {/* <RegisterModule.ButtonLink to="/login">Login</RegisterModule.ButtonLink> */}
       </RegisterModule.FormBox>
     </RegisterModule>
   );
