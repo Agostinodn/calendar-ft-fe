@@ -4,7 +4,7 @@ import { auth } from "../../shared/services/auth";
 
 export default function Register({ children, ...restProps }) {
   const [userForm, setUserForm] = useState({});
-  const [alertForm, setAlertForm] = useState();
+  // const [alertForm, setAlertForm] = useState();
 
   const sendForm = (e) => {
     e.preventDefault();
@@ -14,14 +14,14 @@ export default function Register({ children, ...restProps }) {
       !userForm.password ||
       !userForm.repeat_password
     ) {
-      setAlertForm("Alcuni campi non sono Compilati");
+      // setAlertForm("Alcuni campi non sono Compilati");
     } else if (userForm.password !== userForm.repeat_password) {
-      setAlertForm("le password non corrispondono");
+      // setAlertForm("le password non corrispondono");
     } else {
       auth
         .create(userForm)
-        .then((res) => setAlertForm(res.message))
-        .catch((e) => setAlertForm(e.message));
+        .then((res) => console.log(res.message))
+        .catch((e) => console.log(e.message));
     }
   };
 
@@ -93,9 +93,9 @@ export default function Register({ children, ...restProps }) {
             setUserForm({ ...userForm, repeat_password: e.target.value })
           }
         ></RegisterModule.Input>
-        {alertForm ? (
+        {/* {alertForm ? (
           <RegisterModule.Alert>{alertForm}</RegisterModule.Alert>
-        ) : null}
+        ) : null} */}
         <RegisterModule.Button>Send</RegisterModule.Button>
         {/* <RegisterModule.ButtonLink to="/login">Login</RegisterModule.ButtonLink> */}
       </RegisterModule.FormBox>
