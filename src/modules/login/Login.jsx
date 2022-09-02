@@ -29,32 +29,36 @@ export default function Login({ children, ...restProps }) {
   };
 
   return (
-    <RegisterModule {...restProps}>
-      <RegisterModule.FormBox onSubmit={(e) => sendForm(e)}>
-        <RegisterModule.Text>Login</RegisterModule.Text>
-        <RegisterModule.Input
-          type="email"
-          placeholder={"Email"}
-          autocomplete="on"
-          onChange={(e) => setUserForm({ ...userForm, email: e.target.value })}
-        ></RegisterModule.Input>
-        <RegisterModule.Input
-          type="password"
-          placeholder={"Password"}
-          autocomplete="on"
-          onChange={(e) =>
-            setUserForm({ ...userForm, password: e.target.value })
-          }
-        ></RegisterModule.Input>
-        {alertForm ? (
-          <RegisterModule.Alert>{alertForm}</RegisterModule.Alert>
-        ) : null}
+    <RegisterModule.Container>
+      <RegisterModule {...restProps}>
+        <RegisterModule.FormBox onSubmit={(e) => sendForm(e)}>
+          <RegisterModule.Text>Login</RegisterModule.Text>
+          <RegisterModule.Input
+            type="email"
+            placeholder={"Email"}
+            autocomplete="on"
+            onChange={(e) =>
+              setUserForm({ ...userForm, email: e.target.value })
+            }
+          ></RegisterModule.Input>
+          <RegisterModule.Input
+            type="password"
+            placeholder={"Password"}
+            autocomplete="on"
+            onChange={(e) =>
+              setUserForm({ ...userForm, password: e.target.value })
+            }
+          ></RegisterModule.Input>
+          {alertForm ? (
+            <RegisterModule.Alert>{alertForm}</RegisterModule.Alert>
+          ) : null}
 
-        <RegisterModule.Button>Send</RegisterModule.Button>
-        <RegisterModule.ButtonLink to="/register">
-          Register
-        </RegisterModule.ButtonLink>
-      </RegisterModule.FormBox>
-    </RegisterModule>
+          <RegisterModule.Button>Send</RegisterModule.Button>
+          <RegisterModule.ButtonLink to="/register">
+            Register
+          </RegisterModule.ButtonLink>
+        </RegisterModule.FormBox>
+      </RegisterModule>
+    </RegisterModule.Container>
   );
 }

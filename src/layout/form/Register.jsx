@@ -7,12 +7,16 @@ import {
   Button,
   Alert,
   ButtonLink,
+  Container,
 } from "./style";
 
 export default function Register({ children, ...restProps }) {
   return <RegisterContainer {...restProps}>{children}</RegisterContainer>;
 }
 
+Register.Container = function RegisterContainer({ children, ...restProps }) {
+  return <Container {...restProps}>{children}</Container>;
+};
 Register.FormBox = function RegisterFormBox({ children, ...restProps }) {
   return <FormBox {...restProps}>{children}</FormBox>;
 };

@@ -16,7 +16,7 @@ export default function AdminDashboard() {
     auth
       .getAll()
       .then((res) => {
-        console.log(res.response);
+        // console.log(res.response);
         setData([...res.response]);
       })
       .catch((e) => {
@@ -48,6 +48,7 @@ export default function AdminDashboard() {
                   data={data}
                   setSingleUser={setSingleUser}
                   navigation={navigation}
+                  loadData={loadData}
                 />
               }
             />
