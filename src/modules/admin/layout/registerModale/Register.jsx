@@ -21,15 +21,19 @@ export default function RegisterAdminModule({
     ) {
       console.log("Alcuni campi non sono Compilati");
     } else if (userForm.password !== userForm.repeat_password) {
-      console.log("le password non corrispondono");
+
+      console.log("le password non corrispondono", userForm);
     } else {
       setDisabledBUtton(true);
       setTimeout(() => {
         setDisabledBUtton(false);
       }, 1000);
+      console.log("inviato");
+
       auth
         .create(userForm)
         .then((res) => {
+          console.log(res);
           loadData();
           handleOk();
         })

@@ -15,7 +15,7 @@ const getAll = () => {
 };
 
 const create = (newObject) => {
-  const request = axios.post(url_register, newObject);
+  const request = axios.post(url_register, newObject,{ headers: headerAuth() });
   return request
     .then((response) => response.data)
     .catch((error) => {

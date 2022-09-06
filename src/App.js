@@ -8,7 +8,6 @@ import jwt_decode from "jwt-decode";
 const Calendar = lazy(() => import("./modules/calendar/Calendar"));
 const Dashboard = lazy(() => import("./modules/dashboard/Dashboard"));
 const AdminDashboard = lazy(() => import("./modules/admin/AdminDashboard"));
-const Register = lazy(() => import("./modules/register/Register"));
 const Login = lazy(() => import("./modules/login/Login"));
 const NotFound = lazy(() => import("./layout/notFound/NotFound"));
 
@@ -23,7 +22,6 @@ export default function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route element={<PublicRoute user={user} to={"/dashboard"} />}>
-            <Route exact path="/register" element={<Register />} />
             <Route exact path="/login" element={<Login />} />
           </Route>
           <Route element={<PrivateRoute user={user} to={"/login"} />}>
