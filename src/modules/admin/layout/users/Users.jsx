@@ -58,7 +58,8 @@ export default function Users({
         type="default"
         onClick={showModal}
         style={{
-          margin: "10px 0px 20px",
+          height: "45px",
+          margin: "10px 0px 0px",
           borderColor: "rgb(255,68,56)",
           background: "rgb(255,68,56)",
           color: "#fff",

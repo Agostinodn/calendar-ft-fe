@@ -15,11 +15,13 @@ const getAll = () => {
 };
 
 const create = (newObject) => {
-  const request = axios.post(url_register, newObject,{ headers: headerAuth() });
+  const request = axios.post(url_register, newObject, {
+    headers: headerAuth(),
+  });
   return request
     .then((response) => response.data)
     .catch((error) => {
-      throw new Error(error.message);
+      throw new Error(error.response.data.message);
     });
 };
 
@@ -28,7 +30,7 @@ const login = (newObject) => {
   return request
     .then((response) => response.data)
     .catch((error) => {
-      throw new Error(error.message);
+      throw new Error(error.response.data.message);
     });
 };
 

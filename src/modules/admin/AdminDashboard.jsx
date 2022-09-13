@@ -28,8 +28,10 @@ export default function AdminDashboard() {
     loadData();
   }, []);
 
-  const filteredPersons = data.filter((person) =>
-    person.username.toLowerCase().includes(serchBar.toLowerCase())
+  const filteredPersons = data.filter(
+    (person) =>
+      person.email.toLowerCase().includes(serchBar.toLowerCase()) ||
+      person.username.toLowerCase().includes(serchBar.toLowerCase())
   );
 
   return (

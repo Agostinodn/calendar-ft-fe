@@ -7,13 +7,13 @@ import { useNavigate } from "react-router-dom";
 export default function Login({ children, ...restProps }) {
   const navigate = useNavigate();
   const [userForm, setUserForm] = useState({});
-  // const [alertForm, setAlertForm] = useState();
+  const [alertForm, setAlertForm] = useState();
   const { setToken } = useToken();
 
   const sendForm = (e) => {
     e.preventDefault();
     if (!userForm.email || !userForm.password) {
-      console.log("Alcuni campi non sono Compilati");
+      setAlertForm("Alcuni campi non sono Compilati");
     } else {
       auth
         .login(userForm)
@@ -24,6 +24,7 @@ export default function Login({ children, ...restProps }) {
         })
         .catch((e) => {
           console.log(e);
+          setAlertForm(e.message);
         });
     }
   };
@@ -49,9 +50,9 @@ export default function Login({ children, ...restProps }) {
               setUserForm({ ...userForm, password: e.target.value })
             }
           ></RegisterModule.Input>
-          {/* {alertForm ? (
+          {alertForm ? (
             <RegisterModule.Alert>{alertForm}</RegisterModule.Alert>
-          ) : null} */}
+          ) : null}
 
           <RegisterModule.Button>Send</RegisterModule.Button>
           {/* <RegisterModule.ButtonLink to="/register">

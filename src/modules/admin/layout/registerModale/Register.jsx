@@ -11,6 +11,8 @@ export default function RegisterAdminModule({
 }) {
   const [userForm, setUserForm] = useState({});
   const [disabledButotn, setDisabledBUtton] = useState(false);
+  const [alertForm, setAlertForm] = useState();
+
   const sendForm = (e) => {
     e.preventDefault();
     if (
@@ -19,25 +21,27 @@ export default function RegisterAdminModule({
       !userForm.password ||
       !userForm.repeat_password
     ) {
-      console.log("Alcuni campi non sono Compilati");
+      setAlertForm("Alcuni campi non sono Compilati");
     } else if (userForm.password !== userForm.repeat_password) {
-
-      console.log("le password non corrispondono", userForm);
+      setAlertForm("Le password non corrispondono");
     } else {
       setDisabledBUtton(true);
       setTimeout(() => {
         setDisabledBUtton(false);
       }, 1000);
-      console.log("inviato");
-
       auth
         .create(userForm)
         .then((res) => {
-          console.log(res);
+          console.log("res", res);
+          setAlertForm(res.message);
           loadData();
-          handleOk();
+          setTimeout(() => {
+            handleOk();
+          }, 1000);
         })
-        .catch((e) => console.log(e));
+        .catch((e) => {
+          setAlertForm(e.message);
+        });
     }
   };
 
@@ -110,9 +114,12 @@ export default function RegisterAdminModule({
             setUserForm({ ...userForm, repeat_password: e.target.value })
           }
         ></RegisterModule.Input>
+        {alertForm ? (
+          <RegisterModule.Alert>{alertForm}</RegisterModule.Alert>
+        ) : null}
 
         <RegisterModule.Button disabled={disabledButotn}>
-          Send
+          Crea Utente
         </RegisterModule.Button>
       </RegisterModule.FormBox>
     </RegisterModule>

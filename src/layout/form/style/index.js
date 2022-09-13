@@ -39,7 +39,7 @@ export const Alert = styled.p`
   font-family: inherit;
   width: 100%;
   font-size: 0.8rem;
-  color: #fff;
+  color: rgb(255, 68, 56);
   padding: 5px;
 `;
 
