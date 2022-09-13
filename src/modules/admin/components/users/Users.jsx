@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { List, Button, Modal } from "antd";
-import { Content } from "../../components";
-import RegisterAdminModule from "../registerModale/Register";
+import { Content } from "../../layout";
+import RegisterAdminModule from "../../components/registerModale/Register";
 
 export default function Users({
   setSerchBar,

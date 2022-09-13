@@ -1,2 +1,2 @@
-export { default as User } from "./user/User";
-export { default as Users } from "./users/Users";
+export { default as Sider } from "./sider/Sider";
+export { default as Content } from "../layout/content/Content";

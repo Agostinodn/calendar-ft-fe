@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Register as RegisterModule } from "../../../../layout";
 import { auth } from "../../../../shared/services/auth";
+import CodiceFiscale from "codice-fiscale-js";
 
 export default function RegisterAdminModule({
   children,
@@ -12,6 +13,7 @@ export default function RegisterAdminModule({
   const [userForm, setUserForm] = useState({});
   const [disabledButotn, setDisabledBUtton] = useState(false);
   const [alertForm, setAlertForm] = useState();
+  const [cfCode, setCfCode] = useState();
 
   const sendForm = (e) => {
     e.preventDefault();
@@ -21,7 +23,9 @@ export default function RegisterAdminModule({
       !userForm.password ||
       !userForm.repeat_password
     ) {
-      setAlertForm("Alcuni campi non sono Compilati");
+      setAlertForm("Alcuni campi non sono compilati");
+    } else if (!cfCode) {
+      setAlertForm("Codice fiscale errato");
     } else if (userForm.password !== userForm.repeat_password) {
       setAlertForm("Le password non corrispondono");
     } else {
@@ -30,9 +34,15 @@ export default function RegisterAdminModule({
         setDisabledBUtton(false);
       }, 1000);
       auth
-        .create(userForm)
+        .create({
+          ...userForm,
+          cf: cfCode?.cf,
+          birth: cfCode?.birthday,
+          birthplace: cfCode?.birthplace,
+          birthplaceProvincia: cfCode?.birthplaceProvincia,
+          gender: cfCode?.gender,
+        })
         .then((res) => {
-          console.log("res", res);
           setAlertForm(res.message);
           loadData();
           setTimeout(() => {
@@ -50,42 +60,44 @@ export default function RegisterAdminModule({
       <RegisterModule.FormBox onSubmit={(e) => sendForm(e)}>
         <RegisterModule.Input
           type="text"
-          placeholder={"Name*"}
-          autocomplete="on"
+          placeholder={"Nome*"}
+          required
           onChange={(e) =>
             setUserForm({ ...userForm, username: e.target.value })
           }
         ></RegisterModule.Input>
+
         <RegisterModule.Input
           type="text"
-          placeholder={"Surname"}
-          autocomplete="on"
+          placeholder={"Cognome*"}
+          required
           onChange={(e) =>
             setUserForm({ ...userForm, surname: e.target.value })
           }
         ></RegisterModule.Input>
-        <RegisterModule.Input
-          type="date"
-          onChange={(e) => setUserForm({ ...userForm, birth: e.target.value })}
-        ></RegisterModule.Input>
+
         <RegisterModule.Input
           type="text"
-          placeholder={"Codice Fiscale"}
-          autocomplete="on"
-          onChange={(e) => setUserForm({ ...userForm, cf: e.target.value })}
+          required
+          placeholder={"Codice Fiscale*"}
+          onChange={(e) => {
+            setCfCode(
+              new CodiceFiscale(`${e.target.value.toUpperCase()}`).toJSON()
+            );
+          }}
         ></RegisterModule.Input>
+
         <RegisterModule.Input
           type="text"
           placeholder={"Cellulare"}
-          autocomplete="on"
           onChange={(e) =>
             setUserForm({ ...userForm, cellulare: e.target.value })
           }
         ></RegisterModule.Input>
+
         <RegisterModule.Input
           type="text"
           placeholder={"indirizzo"}
-          autocomplete="on"
           onChange={(e) =>
             setUserForm({ ...userForm, indirizzo: e.target.value })
           }
@@ -94,26 +106,29 @@ export default function RegisterAdminModule({
         <RegisterModule.Input
           type="email"
           placeholder={"Email*"}
-          autocomplete="on"
+          required
           onChange={(e) => setUserForm({ ...userForm, email: e.target.value })}
         ></RegisterModule.Input>
+
         <RegisterModule.Input
           autoComplete={"on"}
           type="password"
+          required
           placeholder={"Password*"}
-          autocomplete="on"
           onChange={(e) =>
             setUserForm({ ...userForm, password: e.target.value })
           }
         ></RegisterModule.Input>
+
         <RegisterModule.Input
-          autoComplete={"on"}
           type="password"
-          placeholder={"Repeat Password*"}
+          required
+          placeholder={"Ripeti Password*"}
           onChange={(e) =>
             setUserForm({ ...userForm, repeat_password: e.target.value })
           }
         ></RegisterModule.Input>
+
         {alertForm ? (
           <RegisterModule.Alert>{alertForm}</RegisterModule.Alert>
         ) : null}

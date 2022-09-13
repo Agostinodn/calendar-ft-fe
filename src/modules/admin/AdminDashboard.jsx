@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { Content } from "./components";
-import { User, Users } from "./layout";
+import { Content } from "./layout";
+import { User, Users } from "./components";
 import { auth } from "../../shared/services/auth";
 import "antd/dist/antd.less";
 
