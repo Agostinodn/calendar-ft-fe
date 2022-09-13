@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function User({ singleUser }) {
+  console.log(singleUser);
   return (
     <>
       <div>
@@ -19,6 +20,10 @@ export default function User({ singleUser }) {
           indirizzo:{" "}
           {singleUser.indirizzo ? singleUser.indirizzo : "non presente"}
         </p>
+        <p>
+          luogo di nascita: {singleUser.uid ? singleUser.uid : "non presente"}
+        </p>
+
         <p>role: {singleUser.role ? singleUser.role : "non presente"}</p>
         <p>uid: {singleUser.uid ? singleUser.uid : "non presente"}</p>
       </div>
