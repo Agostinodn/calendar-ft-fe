@@ -41,7 +41,7 @@ export default function Dashboard() {
       if (data[i].mode === "ufficio") giorni_lavoro++;
       if (data[i].mode === "smart") giorni_lavoro++;
       if (data[i].mode === "trasferta") giorni_lavoro++;
-      if (data[i].mode === "chiusura") giorni_lavoro++;
+      if (data[i].mode === "chiusura") giorni_ferie++;
       if (data[i].mode === "ferie") giorni_ferie++;
       if (data[i].mode === "malattia") giorni_malattia++;
     }
@@ -106,18 +106,17 @@ export default function Dashboard() {
           >
             <hr className="my-25" />
             <Descriptions>
-              <Descriptions.Item label="nome" span={3}>
-                {user?.username || "non presente"}
+              <Descriptions.Item span={3}>
+                {user?.username || null} {user?.surname || null}
               </Descriptions.Item>
-              <Descriptions.Item label="cognome" span={3}>
-                {user?.surname || "non presente"}
+              <Descriptions.Item span={3}>
+                {user?.birthplace + " (" + user?.birthplaceProvincia + ")" ||
+                  null}
               </Descriptions.Item>
-              <Descriptions.Item label="data di nascita" span={3}>
-                {user?.birth || "non presente"}
+              <Descriptions.Item span={3}>
+                {user?.birth || null}
               </Descriptions.Item>
-              <Descriptions.Item label="CF" span={3}>
-                {user?.cf || "non presente"}
-              </Descriptions.Item>
+              <Descriptions.Item span={3}>{user?.cf || null}</Descriptions.Item>
             </Descriptions>
           </Card>
         </Col>
