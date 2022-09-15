@@ -2,11 +2,14 @@ import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
 export function PublicRoute({ user, to }) {
-  return user?.user ? <Navigate to={to} /> : <Outlet />;
+  console.log(user);
+  if (user?.user?.role === "admin") return <Navigate to={"/admin"} />;
+  if (user?.user?.role === "standard") return <Navigate to="/dashboard" />;
+  return <Outlet />;
 }
 
 export function PrivateRoute({ user, to }) {
-  return user?.user ? <Outlet /> : <Navigate to={to} />;
+  return user?.user.role === "standard" ? <Outlet /> : <Navigate to={to} />;
 }
 
 export function AdminRoute({ user, to }) {

@@ -30,9 +30,6 @@ export default function RegisterAdminModule({
       setAlertForm("Le password non corrispondono");
     } else {
       setDisabledBUtton(true);
-      setTimeout(() => {
-        setDisabledBUtton(false);
-      }, 1000);
       auth
         .create({
           ...userForm,
@@ -47,6 +44,7 @@ export default function RegisterAdminModule({
           loadData();
           setTimeout(() => {
             handleOk();
+            setDisabledBUtton(false);
           }, 1000);
         })
         .catch((e) => {
