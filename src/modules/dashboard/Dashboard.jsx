@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Card, Descriptions, Progress } from "antd";
 import { anagrafica } from "shared/services/anagrafica";
+import { useSelector } from "react-redux";
 
 export default function Dashboard() {
-  const [user, setUser] = useState();
-  const [dbData, setDbData] = useState([]);
+  const { user } = useSelector((state) => ({ ...state.auth }));
 
+  const [dbData, setDbData] = useState([]);
   const [totWork, setTotWork] = useState(0);
   // const [workDay, setWorkDay] = useState(0);
   const [lavoro, setLavoro] = useState(0);
@@ -13,10 +14,6 @@ export default function Dashboard() {
   const [malattia, setMalattia] = useState(0);
 
   useEffect(() => {
-    //GET USER BY LOCAL S.
-    const localUser = JSON.parse(localStorage.getItem("user"));
-    setUser(localUser);
-
     //GET DATA WORK MODE
     anagrafica
       .getAll()
@@ -107,16 +104,20 @@ export default function Dashboard() {
             <hr className="my-25" />
             <Descriptions>
               <Descriptions.Item span={3}>
-                {user?.username || null} {user?.surname || null}
+                {user?.user?.username || null} {user?.surname || null}
               </Descriptions.Item>
               <Descriptions.Item span={3}>
-                {user?.birthplace + " (" + user?.birthplaceProvincia + ")" ||
-                  null}
+                {user?.user?.birthplace +
+                  " (" +
+                  user?.user?.birthplaceProvincia +
+                  ")" || null}
               </Descriptions.Item>
               <Descriptions.Item span={3}>
-                {user?.birth || null}
+                {user?.user?.birth || null}
               </Descriptions.Item>
-              <Descriptions.Item span={3}>{user?.cf || null}</Descriptions.Item>
+              <Descriptions.Item span={3}>
+                {user?.user?.cf || null}
+              </Descriptions.Item>
             </Descriptions>
           </Card>
         </Col>
@@ -131,13 +132,13 @@ export default function Dashboard() {
             <hr className="my-25" />
             <Descriptions>
               <Descriptions.Item label="email" span={3}>
-                {user?.email || "non presente"}
+                {user?.user?.email || "non presente"}
               </Descriptions.Item>
               <Descriptions.Item label="cellulare" span={3}>
-                {user?.cellulare || "non presente"}
+                {user?.user?.cellulare || "non presente"}
               </Descriptions.Item>
               <Descriptions.Item label="indirizzo" span={3}>
-                {user?.indirizzo || "non presente"}
+                {user?.user?.indirizzo || "non presente"}
               </Descriptions.Item>
             </Descriptions>
           </Card>
@@ -153,10 +154,10 @@ export default function Dashboard() {
             <hr className="my-25" />
             <Descriptions>
               <Descriptions.Item label="utente" span={3}>
-                {user?.role || "non presente"}
+                {user?.user?.role || "non presente"}
               </Descriptions.Item>
               <Descriptions.Item label="ruolo F.T" span={3}>
-                {user?.ft_role || "non presente"}
+                {user?.user?.ft_role || "non presente"}
               </Descriptions.Item>
             </Descriptions>
           </Card>

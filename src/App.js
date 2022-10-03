@@ -1,9 +1,9 @@
 import React, { lazy, Suspense, useEffect } from "react";
-import { Routes, Route, HashRouter as BrowserRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { NavbarModule } from "./modules";
 import { PrivateRoute, PublicRoute, AdminRoute } from "./routes/guards";
 import { useSelector, useDispatch } from "react-redux";
-import { setUser } from "./app/features/authSlice";
+import { setUser } from "app/features/authSlice";
 
 // LAZY IMPORT
 const Calendar = lazy(() => import("./modules/calendar/Calendar"));
