@@ -1,8 +1,9 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { Routes, Route, HashRouter as BrowserRouter } from "react-router-dom";
 import { NavbarModule } from "./modules";
 import { PrivateRoute, PublicRoute, AdminRoute } from "./routes/guards";
-import jwt_decode from "jwt-decode";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "./app/features/authSlice";
 
 // LAZY IMPORT
 const Calendar = lazy(() => import("./modules/calendar/Calendar"));
@@ -13,8 +14,12 @@ const NotFound = lazy(() => import("./layout/notFound/NotFound"));
 
 export default function App() {
   //GESTIONE AUTH TOKEN DA MIGLIORARE
-  let user = localStorage.getItem("token");
-  if (user) user = jwt_decode(user);
+  const { user } = useSelector((state) => ({ ...state.auth }));
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setUser());
+  }, []);
 
   return (
     <BrowserRouter>

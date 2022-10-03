@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Card, Descriptions, Progress } from "antd";
-import { anagrafica } from "../../shared/services/anagrafica";
+import { anagrafica } from "shared/services/anagrafica";
 
 export default function Dashboard() {
   const [user, setUser] = useState();

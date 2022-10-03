@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Register as RegisterModule } from "../../layout";
-import { auth } from "../../shared/services/auth";
-import { useToken } from "../../shared/hooks";
+import { Register as RegisterModule } from "layout";
+import { auth } from "shared/services/auth";
+import { useToken } from "shared/hooks";
 import { useNavigate } from "react-router-dom";
 
 export default function Login({ children, ...restProps }) {

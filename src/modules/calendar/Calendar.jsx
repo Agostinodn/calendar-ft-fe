@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Alert } from "antd";
 import CalendarRender from "./components/CalendarRender";
 import Modale from "./components/Modal";
-import { anagrafica } from "../../shared/services/anagrafica";
+import { anagrafica } from "shared/services/anagrafica";
 import "antd/dist/antd.less";
 
 export default function CalendarLayout() {

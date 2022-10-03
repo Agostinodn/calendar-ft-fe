@@ -1,15 +1,16 @@
+import { useDispatch } from "react-redux";
+import { setLogout, setUser } from "app/features/authSlice";
+
 export default function useToken() {
+  const dispatch = useDispatch();
 
   const saveToken = (user) => {
     localStorage.setItem("token", JSON.stringify(user.token));
-    localStorage.setItem("user", JSON.stringify(user.user));
-    window.location.reload();
+    dispatch(setUser());
   };
 
   const removeToken = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    window.location.reload();
+    dispatch(setLogout());
   };
 
   return {
