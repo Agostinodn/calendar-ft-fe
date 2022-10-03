@@ -19,7 +19,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(setUser());
-  }, []);
+  }, [dispatch]);
 
   return (
     <BrowserRouter>
