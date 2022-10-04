@@ -16,7 +16,6 @@ export default function AdminDashboard() {
     auth
       .getAll()
       .then((res) => {
-        // console.log(res.response);
         setData([...res.response]);
       })
       .catch((e) => {

@@ -108,15 +108,14 @@ export default function RegisterAdminModule({
           type="email"
           placeholder={"Email*"}
           required
-          autoComplete="off"
+          autoComplete="on"
           onChange={(e) => setUserForm({ ...userForm, email: e.target.value })}
         ></RegisterModule.Input>
 
         <RegisterModule.Input
-          autoComplete={"on"}
           type="password"
           required
-          autoComplete="off"
+          autoComplete="on"
           placeholder={"Password*"}
           onChange={(e) =>
             setUserForm({ ...userForm, password: e.target.value })
@@ -126,7 +125,7 @@ export default function RegisterAdminModule({
         <RegisterModule.Input
           type="password"
           required
-          autoComplete="off"
+          autoComplete="on"
           placeholder={"Ripeti Password*"}
           onChange={(e) =>
             setUserForm({ ...userForm, repeat_password: e.target.value })
