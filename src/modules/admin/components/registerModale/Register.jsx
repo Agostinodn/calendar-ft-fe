@@ -59,6 +59,7 @@ export default function RegisterAdminModule({
         <RegisterModule.Input
           type="text"
           placeholder={"Nome*"}
+          autoComplete="off"
           required
           onChange={(e) =>
             setUserForm({ ...userForm, username: e.target.value })
@@ -69,6 +70,7 @@ export default function RegisterAdminModule({
           type="text"
           placeholder={"Cognome*"}
           required
+          autoComplete="off"
           onChange={(e) =>
             setUserForm({ ...userForm, surname: e.target.value })
           }
@@ -77,6 +79,7 @@ export default function RegisterAdminModule({
         <RegisterModule.Input
           type="text"
           required
+          autoComplete="off"
           placeholder={"Codice Fiscale*"}
           onChange={(e) => {
             setCfCode(
@@ -105,6 +108,7 @@ export default function RegisterAdminModule({
           type="email"
           placeholder={"Email*"}
           required
+          autoComplete="off"
           onChange={(e) => setUserForm({ ...userForm, email: e.target.value })}
         ></RegisterModule.Input>
 
@@ -112,6 +116,7 @@ export default function RegisterAdminModule({
           autoComplete={"on"}
           type="password"
           required
+          autoComplete="off"
           placeholder={"Password*"}
           onChange={(e) =>
             setUserForm({ ...userForm, password: e.target.value })
@@ -121,6 +126,7 @@ export default function RegisterAdminModule({
         <RegisterModule.Input
           type="password"
           required
+          autoComplete="off"
           placeholder={"Ripeti Password*"}
           onChange={(e) =>
             setUserForm({ ...userForm, repeat_password: e.target.value })

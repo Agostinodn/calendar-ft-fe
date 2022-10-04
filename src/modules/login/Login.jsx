@@ -37,7 +37,7 @@ export default function Login({ children, ...restProps }) {
           <RegisterModule.Input
             type="email"
             placeholder={"Email"}
-            autocomplete="on"
+            autoComplete="on"
             onChange={(e) =>
               setUserForm({ ...userForm, email: e.target.value })
             }
@@ -45,7 +45,7 @@ export default function Login({ children, ...restProps }) {
           <RegisterModule.Input
             type="password"
             placeholder={"Password"}
-            autocomplete="on"
+            autoComplete="on"
             onChange={(e) =>
               setUserForm({ ...userForm, password: e.target.value })
             }
